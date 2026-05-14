@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cofre Desbloqueado</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    font-family:'Orbitron', sans-serif;
+
+    background:
+    radial-gradient(circle at top, rgba(255,215,0,0.12), transparent 40%),
+    linear-gradient(135deg,#050505,#1a1200,#000000);
+
+    color:white;
+
+    position:relative;
+}
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:grid 10s linear infinite;
+}
+
+@keyframes grid{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(40px);
+    }
+}
+
+.caixa{
+
+    position:relative;
+
+    width:400px;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    text-align:center;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(0,0,0,0.45);
+
+    border:1px solid rgba(255,215,0,0.35);
+
+    box-shadow:
+    0 0 35px rgba(255,215,0,0.15),
+    0 0 90px rgba(255,215,0,0.05);
+
+    z-index:2;
+
+    animation:entrada 0.7s ease;
+}
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:scale(0.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.icone{
+
+    font-size:70px;
+
+    margin-bottom:18px;
+
+    animation:flutuar 2s ease-in-out infinite;
+}
+
+@keyframes flutuar{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+h1{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+    color:#ffd700;
+
+    letter-spacing:2px;
+}
+
+p{
+
+    line-height:1.7;
+
+    color:#f2f2f2;
+
+    margin-bottom:30px;
+
+    font-size:15px;
+}
+
+.botao{
+
+    display:inline-block;
+
+    padding:16px 32px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    color:black;
+
+    background:
+    linear-gradient(135deg,#ffd700,#b8860b);
+
+    transition:0.3s;
+}
+
+.botao:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 25px rgba(255,215,0,0.35);
+}
+
+.codigo{
+
+    position:absolute;
+
+    color:rgba(255,215,0,0.08);
+
+    font-size:14px;
+
+    line-height:18px;
+
+    user-select:none;
+
+    z-index:1;
+}
+
+.c1{
+    top:10%;
+    left:5%;
+}
+
+.c2{
+    bottom:12%;
+    right:7%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="codigo c1">
+
+TREASURE
+ACCESS
+UNLOCKED
+
+</div>
+
+<div class="codigo c2">
+
+010101
+110010
+101101
+
+</div>
+
+<div class="caixa">
+
+<div class="icone">📦</div>
+
+<h1>
+COFRE DESBLOQUEADO
+</h1>
+
+<p>
+
+Parabéns, agente.<br><br>
+
+Você conseguiu reunir todas as pistas e desbloquear o Tesouro Final da missão.
+
+</p>
+
+<a
+class="botao"
+href="https://google.com"
+target="_blank"
+>
+
+ABRIR TESOURO
+
+</a>
+
+</div>
+
+</body>
+
+</html>
