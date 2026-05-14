@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acesso Confidencial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Orbitron', sans-serif;
+    background:
+    radial-gradient(circle at top, rgba(0,255,170,0.15), transparent 40%),
+    linear-gradient(135deg,#020202,#07120d,#000000);
+    color:white;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(0,255,170,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,170,0.07) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 8s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        transform:translateY(0px);
+    }
+    to{
+        transform:translateY(40px);
+    }
+}
+
+.painel{
+    position:relative;
+    width:360px;
+    padding:40px;
+    border-radius:24px;
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.45);
+    border:1px solid rgba(0,255,170,0.3);
+    box-shadow:
+    0 0 25px rgba(0,255,170,0.15),
+    0 0 80px rgba(0,255,170,0.05);
+    z-index:2;
+}
+
+.logo{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.titulo{
+    text-align:center;
+    font-size:26px;
+    letter-spacing:3px;
+    margin-bottom:8px;
+}
+
+.sub{
+    text-align:center;
+    font-size:12px;
+    color:#9effd6;
+    margin-bottom:30px;
+    opacity:0.8;
+}
+
+.inputBox{
+    position:relative;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border-radius:14px;
+    border:1px solid rgba(0,255,170,0.3);
+    background:rgba(255,255,255,0.05);
+    color:white;
+    outline:none;
+    font-size:16px;
+    letter-spacing:3px;
+    text-align:center;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#00ffaa;
+    box-shadow:0 0 15px rgba(0,255,170,0.4);
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#00ffaa,#008f61);
+    color:black;
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 0 25px rgba(0,255,170,0.45);
+}
+
+.status{
+    text-align:center;
+    margin-top:18px;
+    min-height:22px;
+    font-size:13px;
+    color:#8fffcf;
+}
+
+.scan{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg, transparent, #00ffaa, transparent);
+    animation:scan 3s linear infinite;
+}
+
+@keyframes scan{
+    0%{
+        top:0;
+    }
+
+    100%{
+        top:100%;
+    }
+}
+
+.codigo{
+    position:absolute;
+    color:rgba(0,255,170,0.08);
+    font-size:14px;
+    white-space:pre;
+    line-height:18px;
+    z-index:1;
+    user-select:none;
+}
+
+.c1{
+    left:5%;
+    top:10%;
+}
+
+.c2{
+    right:8%;
+    bottom:12%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="codigo c1">
+0101010101
+1010010101
+1101010010
+</div>
+
+<div class="codigo c2">
+ACCESS
+SECURE
+ALPHA-X
+</div>
+
+<div class="painel">
+
+<div class="scan"></div>
+
+<div class="logo">🕶️</div>
+
+<div class="titulo">
+ACESSO SIGILOSO
+</div>
+
+<div class="sub">
+PROTOCOLO DE SEGURANÇA ATIVADO
+</div>
+
+<div class="inputBox">
+<input
+type="password"
+id="senha"
+placeholder="DIGITE O CÓDIGO"
+>
+</div>
+
+<button onclick="entrar()">
+VALIDAR ACESSO
+</button>
+
+<div class="status" id="status"></div>
+
+</div>
+
+<script>
+
+function entrar(){
+
+    const senha = document.getElementById("senha").value;
+    const status = document.getElementById("status");
+
+    status.innerHTML = "VERIFICANDO CREDENCIAIS...";
+
+    setTimeout(() => {
+
+        if(senha.toUpperCase() === "7GA"){
+
+            status.innerHTML = "ACESSO LIBERADO";
+
+            setTimeout(() => {
+                window.location.href = "https://google.com";
+            },1200)
+        }
+
+        else{
+            status.innerHTML = "CÓDIGO INVALIDO";
+        }
+
+    },1500)
+}
+
+</script>
+
+</body>
+</html>
