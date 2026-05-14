@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -43,6 +44,7 @@ body::before{
     from{
         transform:translateY(0px);
     }
+
     to{
         transform:translateY(40px);
     }
@@ -60,6 +62,7 @@ body::before{
     0 0 25px rgba(0,255,170,0.15),
     0 0 80px rgba(0,255,170,0.05);
     z-index:2;
+    transition:0.3s;
 }
 
 .logo{
@@ -145,6 +148,7 @@ button:hover{
 }
 
 @keyframes scan{
+
     0%{
         top:0;
     }
@@ -174,8 +178,36 @@ button:hover{
     bottom:12%;
 }
 
+.erro .painel{
+    animation:tremer 0.2s linear 3;
+}
+
+@keyframes tremer{
+
+    0%{
+        transform:translateX(-6px);
+    }
+
+    25%{
+        transform:translateX(6px);
+    }
+
+    50%{
+        transform:translateX(-6px);
+    }
+
+    75%{
+        transform:translateX(6px);
+    }
+
+    100%{
+        transform:translateX(0px);
+    }
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="codigo c1">
@@ -194,7 +226,7 @@ ALPHA-X
 
 <div class="scan"></div>
 
-<div class="logo">🕶️</div>
+<div class="logo">🔐</div>
 
 <div class="titulo">
 ACESSO SIGILOSO
@@ -205,11 +237,14 @@ PROTOCOLO DE SEGURANÇA ATIVADO
 </div>
 
 <div class="inputBox">
+
 <input
 type="password"
 id="senha"
 placeholder="DIGITE O CÓDIGO"
+
 >
+
 </div>
 
 <button onclick="entrar()">
@@ -224,24 +259,64 @@ VALIDAR ACESSO
 
 function entrar(){
 
-    const senha = document.getElementById("senha").value;
-    const status = document.getElementById("status");
+    const senha =
+    document.getElementById("senha").value;
 
-    status.innerHTML = "VERIFICANDO CREDENCIAIS...";
+    const status =
+    document.getElementById("status");
+
+    const painel =
+    document.querySelector(".painel");
+
+    status.innerHTML =
+    "VERIFICANDO CREDENCIAIS...";
 
     setTimeout(() => {
 
         if(senha.toUpperCase() === "13GB241005"){
 
-            status.innerHTML = "ACESSO LIBERADO";
+            status.innerHTML =
+            "✅ ACESSO LIBERADO — BAÚ DESBLOQUEADO";
+
+            painel.style.border =
+            "1px solid rgba(0,255,170,0.8)";
+
+            painel.style.boxShadow =
+            "0 0 35px rgba(0,255,170,0.45)";
 
             setTimeout(() => {
-                window.location.href = "https://google.com";
-            },1200)
+
+                window.location.href =
+                "https://google.com";
+
+            },1500)
+
         }
 
         else{
-            status.innerHTML = "CÓDIGO INVALIDO";
+
+            painel.style.border =
+            "1px solid rgba(255,0,0,0.8)";
+
+            painel.style.boxShadow =
+            "0 0 35px rgba(255,0,0,0.5)";
+
+            document.body.classList.add("erro");
+
+            status.innerHTML =
+            "❌ CÓDIGO INVÁLIDO — O BAÚ DO TESOURO PERMANECE TRANCADO";
+
+            setTimeout(() => {
+
+                document.body.classList.remove("erro");
+
+                painel.style.border =
+                "1px solid rgba(0,255,170,0.3)";
+
+                painel.style.boxShadow =
+                "0 0 25px rgba(0,255,170,0.15), 0 0 80px rgba(0,255,170,0.05)";
+
+            },700)
         }
 
     },1500)
